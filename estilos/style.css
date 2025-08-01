@@ -231,6 +231,44 @@ main {
     object-fit: cover;
 }
 
+.highlights {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.highlights-card {
+  width: 350px;
+  height: 150px;
+  padding: 10px;
+  background-color: var(--bg-color);
+  outline: 1px solid red;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.highlights-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px var(--hover);
+}
+
+.highlights h2 {
+  text-align: center;
+  font-size: 1.25em;
+  padding: 5px;
+  text-transform: uppercase;
+  color: var(--highlight);
+}
+
+.highlights p {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+
 footer {
     text-align: center;
     color: var(--highlight);
