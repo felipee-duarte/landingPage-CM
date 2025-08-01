@@ -1,0 +1,238 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap");
+
+:root {
+  --defaut: #f9f9f9;
+  --highlight: #5c3d8f;
+  --bg-color: #a7d7a3;
+  --button: #f4d9e1;
+  --card: #e2d4f0;
+  --hover: #3b2363;
+  /* ICONE DE MENU */
+  --gap: 5px;
+  --height-bar: 2.5px;
+  --pos-y-bar-one: 0;
+  --pos-y-bar-three: 0;
+  --scale-bar: 1;
+  --rotate-bar-one: 0;
+  --rotate-bar-three: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(180deg, var(--bg-color), var(--defaut)) no-repeat fixed;
+}
+
+header {
+  display: block;
+  padding: 10px 20px;
+  margin-bottom: 2em;
+  background-color: var(--bg-color);
+
+ position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.topo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo-img img {
+  width: 5em;
+  height: auto;
+}
+
+.icon-menu {
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  cursor: pointer;
+  position: relative;
+}
+
+.bar {
+  position: relative;
+  height: var(--height-bar);
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--highlight);
+}
+
+.bar--1 {
+  top: var(--pos-y-bar-one);
+  transform: rotate(var(--rotate-bar-one));
+  transition: top 200ms 100ms, transform 100ms;
+}
+
+.bar--2 {
+  transform: scaleX(var(--scale-bar));
+  transition: transform 150ms 100ms;
+}
+
+.bar--3 {
+  bottom: var(--pos-y-bar-three);
+  transform: rotate(var(--rotate-bar-three));
+  transition: bottom 200ms 100ms, transform 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--1 {
+  transition: top 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--3 {
+  transition: bottom 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu {
+  --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
+  --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
+  --scale-bar: 0;
+  --rotate-bar-one: 45deg;
+  --rotate-bar-three: -45deg;
+}
+
+menu {
+    display: none;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--bg-color) 10%, var(--button) 100%);
+    z-index: 999;
+}
+
+menu.ativo {
+    display: block;
+}
+
+menu.ativo {
+    display: block;
+}
+
+
+
+menu ul {
+    list-style-type: none;
+}
+
+menu a{
+    display: block;
+    margin-left: 0;
+    padding: 20px;
+    text-align: center;
+    width: 100vw;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    text-decoration: none;
+    color: var(--highlight);
+    
+}
+
+menu a:hover {
+    background-color: var(--card);
+}
+
+main {
+  margin-top: 100px;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.wrapper {
+    max-width: 992px;
+    overflow: hidden;
+}
+
+.wrapper .card {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .swiper-pagination-bullet {
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+    opacity: 1;
+    background-color: var(--card);
+}
+
+.wrapper .swiper-pagination-bullet-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--highlight);
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: autoplay-loading 5s linear forwards;
+}
+
+.container:hover .wrapper .swiper-pagination-bullet-active::before {
+    animation-play-state: paused;
+}
+
+@keyframes autoplay-loading {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.wrapper :where(.swiper-button-prev, .swiper-button-next) {
+    color: var(--card);
+    margin-top: -35px;
+    transition: all 0.3s ease;
+}
+
+.wrapper :where(.swiper-button-prev, .swiper-button-next):hover {
+    color: var(--highlight);
+}
+
+.wrapper .swiper-button-prev {
+    display: none;
+}
+
+.wrapper .swiper-button-next {
+    display: none;
+}
+
+
+
+.card .card-image {
+    position: relative;
+}
+
+.card .card-image img {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+footer {
+    text-align: center;
+    color: var(--highlight);
+}
+
