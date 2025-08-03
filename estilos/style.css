@@ -2,11 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap");
 
 :root {
-  --defaut: #f9f9f9;
-  --highlight: #5c3d8f;
-  --bg-color: #a7d7a3;
-  --button: #f4d9e1;
-  --card: #e2d4f0;
+  --defaut: #ebdcfb;
+  --highlight: #7b2cbf;
+  --bg-color: #f4ecff;
+  --txt-title: #3e0d63;
+  --txt-p: #857c91;
+  --button: #d8b4f8;
+  --card: #faf7ff;
+  --border: #faf7ff;
   --hover: #3b2363;
   /* ICONE DE MENU */
   --gap: 5px;
@@ -27,14 +30,14 @@
 
 body {
   height: 100%;
-  background: linear-gradient(180deg, var(--bg-color), var(--defaut)) no-repeat fixed;
+  background: var(--bg-color);
 }
 
 header {
   display: block;
   padding: 10px 20px;
   margin-bottom: 2em;
-  background-color: var(--bg-color);
+  background: var(--defaut);
 
  position: fixed;
   top: 0;
@@ -111,7 +114,7 @@ menu {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, var(--bg-color) 10%, var(--button) 100%);
+    background: linear-gradient(180deg, var(--defaut) 10%, var(--bg-color) 100%);
     z-index: 999;
 }
 
@@ -143,7 +146,7 @@ menu a{
 }
 
 menu a:hover {
-    background-color: var(--card);
+    background-color: var(--bg-color);
 }
 
 main {
@@ -158,6 +161,7 @@ main {
 }
 
 .wrapper {
+  margin-top: 2em;
     max-width: 992px;
     overflow: hidden;
 }
@@ -242,11 +246,11 @@ main {
 
 .highlights-card {
   width: 350px;
-  height: 150px;
+  height: auto;
   padding: 10px;
-  background-color: var(--bg-color);
-  outline: 1px solid red;
-  border-radius: 30px;
+  background-color: var(--defaut);
+  border: 2px solid var(--border);
+  border-radius: 50px;
   transition: all 0.3s ease;
 }
 
@@ -260,14 +264,54 @@ main {
   font-size: 1.25em;
   padding: 5px;
   text-transform: uppercase;
-  color: var(--highlight);
+  color: var(--txt-title);
 }
 
 .highlights p {
+  color: var(--txt-p);
   text-align: center;
-  font-size: 1.25em;
+  font-size: 1em;
 }
 
+#marcas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.brands{
+  width: 90vw;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+   margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.brand {
+  border: 3px solid var(--border);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.brand:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px var(--hover);
+}
+
+.brand img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+ 
+  width: 5em;
+  height: auto;
+  
+}
 
 footer {
     text-align: center;
