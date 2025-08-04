@@ -39,6 +39,4 @@ const swiper = new Swiper('.wrapper', {
         prevE1: '.swiper-button-prev',
     },
 
-
 });
-

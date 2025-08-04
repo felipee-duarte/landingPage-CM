@@ -52,8 +52,9 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+
 .logo-img img {
-  width: 5em;
+  width: 6em;
   height: auto;
 }
 
@@ -327,95 +328,136 @@ main {
   margin: auto;
 }
 
-.card {
-  width: 300px;
 
-  background: #e6d8f4;
-  border-radius: 20px;
-  padding: 20px;
-  text-align: center;
+/* Container que centraliza o carrossel e posiciona os botões */
+.product-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 90vw;
+  margin: auto;
+}
+
+/* Esconde os produtos fora da tela e permite a rolagem */
+.product-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Lista de produtos que se move no carrossel */
+.product-list {
+  display: flex;
+  gap: 20px; /* Espaço entre os produtos */
+  padding: 20px 0;
+  scroll-behavior: smooth; /* Animação de rolagem suave */
+}
+
+/* Estilização individual de cada produto */
+.product {
+  flex-shrink: 0; /* Impede que os produtos encolham */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.36);
+  background: var(--card);
   transition: all 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 10px var(--hover);
+/* Efeito hover (mantém o seu original) */
+.product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 10px var(--hover);
 }
 
-.desconto {
+.product .image-product {
+  position: relative;
+}
+
+.product .image-product img {
+  width: 6em;
+  object-fit: cover;
+  display: flex;
+  margin: auto;
+  margin-top: 3em;
+}
+
+.product .image-product .product-tag {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  background: #ffdada;
-  color: #cc0033;
-  padding: 5px 10px;
-  border-radius: 15px;
+  left: 25px;
+  top: 25px;
+  color: var(--txt-title);
   font-weight: bold;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 5px 15px;
+  background: var(--button);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.36);
 }
 
-.imagem-produto {
-  width: 100px;
-  margin: 30px auto;
+.product .product-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px 25px;
 }
 
 .estrelas {
+  text-align: left;
   color: gold;
   font-size: 1.3rem;
-  margin: 10px 0;
 }
 
-.titulo {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+.product .product-content .product-title {
+  margin-bottom: 15px;
+  font-weight: bolder;
 }
 
-.descricao {
-  font-size: 0.95rem;
-  color: #222;
-  margin-bottom: 20px;
+.product .product-content .product-text {
+  margin-bottom: 10px;
 }
 
-.preco-antigo {
+.product .product-content .product-footer {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  margin-top: auto;
+  justify-content: space-between;
+  border-top: 1px solid var(--button);
+}
+
+.product .product-footer .card-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.product .card-profile .product-promotion {
   text-decoration: line-through;
-  color: #888;
+  font-weight: normal;
 }
 
-.preco-novo {
+.product .card-profile .product-price {
+  font-size: 1.2em;
   font-weight: bold;
-  font-size: 1.2rem;
-  color: #000;
-  margin-bottom: 20px;
 }
 
-.botao {
-  background-color: #6d42c7;
-  color: white;
-  border: none;
-  padding: 10px 30px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
+.product .product-footer .product-button {
+  background: var(--highlight);
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: var(--border);
+  text-decoration: none;
+  font-weight: normal;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.10);
   transition: all 0.3s ease;
 }
 
-.botao:hover {
+.product .product-footer .product-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 10px var(--hover);
+  box-shadow: 0 5px 5px var(--hover);
 }
-
-
-.botao a {
-  color: var(--card);
-  text-decoration: none;
-}
-
-.botao:hover {
-  background-color: #5731a8;
-}
-
 
 
 footer {
