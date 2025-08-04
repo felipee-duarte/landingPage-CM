@@ -1,15 +1,14 @@
-/* 1 card por vez (já está no padrão mobile-first acima) */
-
-@media screen and (min-width: 600px) {
-  /* Tablets: 2 cards */
-  .product-list .product {
-    width: 50%;
-  }
+@media (min-width: 768px) {
+    .product {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
 }
 
-@media screen and (min-width: 1024px) {
-  /* Desktop: 3 cards */
-  .product-list .product {
-    width: 33.33%;
-  }
+@media (min-width: 1024px) {
+    .product {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
 }
+

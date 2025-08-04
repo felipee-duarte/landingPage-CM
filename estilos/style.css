@@ -341,25 +341,39 @@ main {
 
 /* Esconde os produtos fora da tela e permite a rolagem */
 .product-wrapper {
-  overflow: hidden;
-  width: 100%;
+  overflow-x: auto;
+  scroll-behavior:smooth;
+  scroll-snap-type: x mandatory;
+  width: 90vw;
+  height: auto;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: 1rem;
+  cursor: grab;
+}
+
+.product-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 /* Lista de produtos que se move no carrossel */
 .product-list {
   display: flex;
-  gap: 20px; /* Espaço entre os produtos */
-  padding: 20px 0;
-  scroll-behavior: smooth; /* Animação de rolagem suave */
+  gap: 10px; /* Espaço entre os produtos */
 }
 
 /* Estilização individual de cada produto */
 .product {
-  flex-shrink: 0; /* Impede que os produtos encolham */
-  height: auto;
+  flex-shrink: 0;
+  height: 450px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-radius: 20px;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  max-width: 100%;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.36);
   background: var(--card);
   transition: all 0.3s ease;
@@ -370,6 +384,7 @@ main {
   transform: translateY(-10px);
   box-shadow: 0 10px 10px var(--hover);
 }
+
 
 .product .image-product {
   position: relative;
