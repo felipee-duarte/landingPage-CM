@@ -330,148 +330,192 @@ main {
 
 
 /* Container que centraliza o carrossel e posiciona os botões */
-.product-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 90vw;
-  margin: auto;
+/* Estilos da seção */
+.produtos {
+    padding: 2rem 0;
+    text-align: center;
+    background-color: #f9f9f9;
 }
 
-/* Esconde os produtos fora da tela e permite a rolagem */
-.product-wrapper {
-  overflow-x: auto;
-  scroll-behavior:smooth;
-  scroll-snap-type: x mandatory;
-  width: 90vw;
-  height: auto;
-  padding: 20px;
-  -webkit-overflow-scrolling: touch;
-  display: flex;
-  gap: 1rem;
-  cursor: grab;
+.title-txt, .title {
+    margin: 0;
+    margin-bottom: 2rem;
+    color: #333;
 }
 
-.product-wrapper::-webkit-scrollbar {
-  display: none;
+
+/* Estilização individual de cada produto (mantém o seu original) */
+/* Estilos da seção */
+.produtos {
+    padding: 2rem 0;
+    text-align: center;
+    background-color: #f9f9f9;
 }
 
-/* Lista de produtos que se move no carrossel */
-.product-list {
-  display: flex;
-  gap: 10px; /* Espaço entre os produtos */
+.title-txt, .title {
+    margin: 0;
+    margin-bottom: 2rem;
+    color: #333;
 }
 
-/* Estilização individual de cada produto */
+/* Estilos do Carrossel - Adaptados para sua estrutura */
+.carousel-container {
+    position: relative;
+    width: 90vw; /* Largura máxima do carrossel */
+    padding: 10px;
+    outline: 1px solid red;
+    margin: 0 auto;
+    overflow: hidden; /* Esconde os itens fora da visualização */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 90vw;
+    padding: 0 10px; /* Adiciona um pequeno padding nas laterais */
+}
+
+/* Estilização individual de cada produto (ajustado) */
 .product {
-  flex-shrink: 0;
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 20px;
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  max-width: 100%;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.36);
-  background: var(--card);
-  transition: all 0.3s ease;
+    flex-shrink: 0;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+    width: 70vw;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.36);
+    background: var(--card);
+    transition: all 0.3s ease;
+    margin: 0 11px; /* Mantém o espaçamento entre os cards */
 }
 
 /* Efeito hover (mantém o seu original) */
 .product:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 10px var(--hover);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 10px var(--hover);
 }
 
-
 .product .image-product {
-  position: relative;
+    position: relative;
 }
 
 .product .image-product img {
-  width: 6em;
-  object-fit: cover;
-  display: flex;
-  margin: auto;
-  margin-top: 3em;
+    width: 6em;
+    object-fit: cover;
+    display: flex;
+    margin: auto;
+    margin-top: 3em;
 }
 
 .product .image-product .product-tag {
-  position: absolute;
-  left: 25px;
-  top: 25px;
-  color: var(--txt-title);
-  font-weight: bold;
-  font-size: 1em;
-  border-radius: 20px;
-  padding: 5px 15px;
-  background: var(--button);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.36);
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    color: var(--txt-title);
+    font-weight: bold;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 5px 15px;
+    background: var(--button);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.36);
 }
 
 .product .product-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 25px 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 25px 25px;
 }
 
 .estrelas {
-  text-align: left;
-  color: gold;
-  font-size: 1.3rem;
+    text-align: left;
+    color: gold;
+    font-size: 1.3rem;
 }
 
 .product .product-content .product-title {
-  margin-bottom: 15px;
-  font-weight: bolder;
+    margin-bottom: 15px;
+    font-weight: bolder;
 }
 
 .product .product-content .product-text {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .product .product-content .product-footer {
-  display: flex;
-  align-items: center;
-  padding-top: 15px;
-  margin-top: auto;
-  justify-content: space-between;
-  border-top: 1px solid var(--button);
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    margin-top: auto;
+    justify-content: space-between;
+    border-top: 1px solid var(--button);
 }
 
 .product .product-footer .card-profile {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .product .card-profile .product-promotion {
-  text-decoration: line-through;
-  font-weight: normal;
+    text-decoration: line-through;
+    font-weight: normal;
 }
 
 .product .card-profile .product-price {
-  font-size: 1.2em;
-  font-weight: bold;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .product .product-footer .product-button {
-  background: var(--highlight);
-  padding: 10px 20px;
-  border-radius: 30px;
-  color: var(--border);
-  text-decoration: none;
-  font-weight: normal;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.10);
-  transition: all 0.3s ease;
+    background: var(--highlight);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: var(--border);
+    text-decoration: none;
+    font-weight: normal;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.10);
+    transition: all 0.3s ease;
 }
 
 .product .product-footer .product-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 5px var(--hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 5px var(--hover);
+}
+
+/* Botões de navegação */
+.prev-button, .next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.prev-button:hover, .next-button:hover {
+    opacity: 1;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
 }
 
 
