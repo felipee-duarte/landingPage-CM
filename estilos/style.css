@@ -58,6 +58,10 @@ header {
   height: auto;
 }
 
+.logo-imh a:hover {
+  background-color: var(--defaut);
+}
+
 .icon-menu {
   width: 25px;
   display: flex;
@@ -239,6 +243,7 @@ main {
   margin-top: 2em;
   margin-bottom: 2em;
   gap: 20px;
+  padding: 10px;
 }
 
 .highlights-card {
@@ -256,12 +261,19 @@ main {
   box-shadow: 0 5px 10px var(--hover);
 }
 
+.highlights-card h3 {
+  text-align: center;
+  font-size: 1.25em;
+  padding: 5px;
+  text-transform: uppercase;
+  color: var(--txt-title);
+}
+
 .title {
   text-align: center;
   margin-top: 2em;
   font-size: 1.25em;
   padding: 5px;
-  text-transform: uppercase;
   color: var(--txt-title);
 }
 
@@ -329,168 +341,419 @@ main {
   margin: auto;
 }
 
-
 .produtos {
-    padding: 2rem 0;
-    text-align: center;
+  padding: 2rem 0;
+  text-align: center;
 }
 
 /* Estilos do Carrossel - Adaptados para sua estrutura */
 .carousel-container {
-    position: relative;
-    width: 100vw; /* Largura do seu carrossel */
-    height: 500px;
-    margin: 0 auto;
-    margin-top: 2em;
-    padding-top: 15px;
-    overflow-x: scroll; /* Permite a rolagem horizontal */
-    overflow-y: hidden; /* Oculta a barra de rolagem vertical */
-    scroll-behavior: smooth; /* Animação suave para os botões */
-    scroll-snap-type: x mandatory; /* Faz os cards "se encaixarem" */
-    -webkit-overflow-scrolling: touch; /* Melhor rolagem em iOS */
-    display: flex; /* Para os cards ficarem lado a lado */
-    gap: 22px; /* O espaçamento entre os cards */
-    overflow-x: scroll; /* ESSA PROPRIEDADE É FUNDAMENTAL */
-    scroll-snap-type: x mandatory;
+  position: relative;
+  width: 100vw; /* Largura do seu carrossel */
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 2em;
+  padding-top: 15px;
+  overflow-x: scroll; /* Permite a rolagem horizontal */
+  overflow-y: hidden; /* Oculta a barra de rolagem vertical */
+  scroll-behavior: smooth; /* Animação suave para os botões */
+  scroll-snap-type: x mandatory; /* Faz os cards "se encaixarem" */
+  -webkit-overflow-scrolling: touch; /* Melhor rolagem em iOS */
+  display: flex; /* Para os cards ficarem lado a lado */
+  gap: 22px; /* O espaçamento entre os cards */
+  overflow-x: scroll; /* ESSA PROPRIEDADE É FUNDAMENTAL */
+  scroll-snap-type: x mandatory;
 }
 
 .carousel-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .product {
-    flex-shrink: 0; /* Impede que os itens encolham */
-    width: 80vw;
-    max-width: calc(80vw - 22px); /* A largura do container menos o espaçamento */
-    scroll-snap-align: center; /* O card se centraliza quando a rolagem para */
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.36);
-    background: var(--card);
+  flex-shrink: 0; /* Impede que os itens encolham */
+  width: 80vw;
+  max-width: calc(80vw - 22px); /* A largura do container menos o espaçamento */
+  scroll-snap-align: center; /* O card se centraliza quando a rolagem para */
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.36);
+  background: var(--card);
+}
+
+.product .product-title {
+  margin-top: 1.5em;
+  text-align: left;
+}
+
+.product .product-text {
+  text-align: left;
 }
 
 /* Efeito hover (mantém o seu original) */
 .product:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 10px var(--hover);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 10px var(--hover);
 }
 
 .product .image-product {
-    position: relative;
+  position: relative;
 }
 
 .product .image-product img {
-    width: 6em;
-    object-fit: cover;
-    display: flex;
-    margin: auto;
-    margin-top: 3em;
+  width: 6em;
+  object-fit: cover;
+  display: flex;
+  margin: auto;
+  margin-top: 3em;
 }
 
 .product .image-product .product-tag {
-    position: absolute;
-    left: 25px;
-    top: 25px;
-    color: var(--txt-title);
-    font-weight: bold;
-    font-size: 1em;
-    border-radius: 20px;
-    padding: 5px 15px;
-    background: var(--button);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.36);
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  color: var(--txt-title);
+  font-weight: bold;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 5px 15px;
+  background: var(--button);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.36);
 }
 
 .product .product-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 25px 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px 25px;
 }
 
 .estrelas {
-    text-align: left;
-    color: gold;
-    font-size: 1.3rem;
+  text-align: left;
+  color: gold;
+  font-size: 1.3rem;
 }
 
 .product .product-content .product-title {
-    margin-bottom: 15px;
-    font-weight: bolder;
+  margin-bottom: 15px;
+  font-weight: bolder;
 }
 
 .product .product-content .product-text {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .product .product-content .product-footer {
-    display: flex;
-    align-items: center;
-    padding-top: 15px;
-    margin-top: auto;
-    justify-content: space-between;
-    border-top: 1px solid var(--button);
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  margin-top: auto;
+  justify-content: space-between;
+  border-top: 1px solid var(--button);
 }
 
 .product .product-footer .card-profile {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .product .card-profile .product-promotion {
-    text-decoration: line-through;
-    font-weight: normal;
+  text-decoration: line-through;
+  font-weight: normal;
 }
 
 .product .card-profile .product-price {
-    font-size: 1.2em;
-    font-weight: bold;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .product .product-footer .product-button {
-    background: var(--highlight);
-    padding: 10px 20px;
-    border-radius: 30px;
-    color: var(--border);
-    text-decoration: none;
-    font-weight: normal;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.10);
-    transition: all 0.3s ease;
+  background: var(--highlight);
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: var(--border);
+  text-decoration: none;
+  font-weight: normal;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .product .product-footer .product-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 5px var(--hover);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 5px var(--hover);
 }
 
 /* Botões de navegação */
-.prev-button, .next-button {
-    /* Estilos para os seus botões de navegação */
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
+.prev-button,
+.next-button {
+  /* Estilos para os seus botões de navegação */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
 }
 
-.prev-button:hover, .next-button:hover {
-    opacity: 1;
+.prev-button:hover,
+.next-button:hover {
+  opacity: 1;
 }
 
 .prev-button {
-    left: 10px;
-    display: none;
+  left: 10px;
+  display: none;
 }
 
 .next-button {
-    right: 10px;
-    display: none;
+  right: 10px;
+  display: none;
+}
+
+
+.flex__1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.flex__2 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  display: flex;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  align-items: center;
+  height: 190px;
+  width: 320px;
+  position: relative;
+  perspective: 800px;
+}
+
+.card__side {
+  width: 100%;
+  height: 100%;
+  border-radius: 3.18mm;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: transform 0.7s ease-out;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.card__side_front {
+  background: linear-gradient(90deg, var(--highlight) 0%, var(--button) 100%);
+  transform: rotateY(0deg);
+}
+
+.card__side_back {
+  background: linear-gradient(-90deg, var(--highlight) 0%, var(--button) 100%);
+  transform: rotateY(-180deg);
+}
+
+.card-name {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  height: 33px;
+
+}
+
+.card__side__name-bank {
+  display: flex;
+  width: 190px;
+  font-weight: 500;
+  position: relative;
+  font-size: 22px;
+  margin-left: 8px;
+  color: var(--bg-color);
+}
+
+.card-name img {
+  width: 60px;
+  height: 50px;
+}
+
+.card__side__name-bank::after {
+  content: "CM Bank";
+  position: absolute;
+  font-size: 8px;
+  top: 105%;
+  left: 1%;
+  color: var(--bg-color);
+}
+
+.card__side__chip {
+  display: flex;
+  width: 80px;
+  height: auto;
+}
+
+.card__side__chip img {
+  width: 60px;
+  height: auto;
+  margin-left: 0.75em;
+}
+
+.card__side__chip:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: 80px;
+  right: 15px;
+  transform: scale(1.3);
+}
+
+.card__side__name-person {
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  position: relative;
+  display: block;
+  color: var(--card);
+}
+
+.card__side__name-person::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 35px;
+  aspect-ratio: 1 / 1;
+  background: red;
+  bottom: -10px;
+  right: 0px;
+  border-radius: 50%;
+}
+
+.card__side__name-person::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 35px;
+  aspect-ratio: 1 / 1;
+  background: orange;
+  bottom: -10px;
+  right: 23px;
+  border-radius: 50%;
+}
+
+.card__side__black {
+  background: black;
+  width: 100%;
+  height: 50px;
+  border-radius: 12px 12px 0 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card__side__number {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 300px;
+  margin-top: 5em;
+  height: 50px;
+}
+
+.sticker img{
+  width: 50px;
+  height: 50px;
+  background: var(--card);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.sticker img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px var(--card);
+}
+
+
+.card:hover .card__side_front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .card__side_back {
+  transform: rotateY(0deg);
+}
+
+.contato {
+  width: 40vw;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  
+}
+
+.button {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(120deg, var(--highlight), var(--button));
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  transition: 0.1s;
+}
+
+.button a {
+  text-decoration: none;
+  text-align: center;
+  height: 2em;
+  padding: 2px;
+}
+
+.button .ph {
+  color: var(--card);
+  font-size: 2em;
+}
+
+.button:active {
+  transform: scale(0.85);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background-color: var(--button);
+  border-radius: 50px;
+  z-index: -1;
+  transition: 0.4s;
+}
+
+.button:hover::before {
+  width: 0px;
+  height: 0px;
 }
 
 

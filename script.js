@@ -41,8 +41,6 @@ const swiper = new Swiper('.wrapper', {
 
 });
 
-// Este é o código completo da última resposta.
-// Ele já faz o carrossel ser automático E manual.
 document.addEventListener('DOMContentLoaded', () => {
 
     // Função que inicializa um carrossel específico
@@ -72,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetAutoSlide();
             });
         }
-        
+
         // --- Lógica do Autoplay ---
         let autoSlideInterval;
         const startAutoSlide = () => {
@@ -98,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         autoSlideInterval = startAutoSlide();
-        
+
         // --- Eventos de reset ---
         carouselContainer.addEventListener('touchstart', resetAutoSlide, { passive: true });
         carouselContainer.addEventListener('mousedown', resetAutoSlide);
@@ -115,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetId = button.dataset.target;
         const carousel = document.getElementById(targetId).querySelector('.carousel-container');
         const nextButton = document.querySelector(`.next-button[data-target="${targetId}"]`);
-        
+
         if (carousel) {
             setupCarousel(carousel, button, nextButton);
         }
