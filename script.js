@@ -41,129 +41,84 @@ const swiper = new Swiper('.wrapper', {
 
 });
 
+// Este é o código completo da última resposta.
+// Ele já faz o carrossel ser automático E manual.
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.carousel-track');
-    // Seleciona os itens com a classe 'product'
-    const items = Array.from(track.children);
-    const prevButton = document.querySelector('.prev-button');
-    const nextButton = document.querySelector('.next-button');
 
-    // A largura do item é a largura do seu card de produto
-    const itemWidth = items[0].getBoundingClientRect().width + 20; // Largura do item + margem
+    // Função que inicializa um carrossel específico
+    const setupCarousel = (carouselContainer, prevButton, nextButton) => {
+        const getScrollAmount = () => {
+            const firstItem = carouselContainer.querySelector('.product');
+            if (!firstItem) return 0;
+            return firstItem.offsetWidth + 22;
+        };
 
-    // Duplica os itens para criar o efeito infinito
-    items.forEach(item => {
-        const clone = item.cloneNode(true);
-        track.appendChild(clone);
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                carouselContainer.scrollBy({
+                    left: getScrollAmount(),
+                    behavior: 'smooth'
+                });
+                resetAutoSlide();
+            });
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                carouselContainer.scrollBy({
+                    left: -getScrollAmount(),
+                    behavior: 'smooth'
+                });
+                resetAutoSlide();
+            });
+        }
+        
+        // --- Lógica do Autoplay ---
+        let autoSlideInterval;
+        const startAutoSlide = () => {
+            return setInterval(() => {
+                const scrollAmount = getScrollAmount();
+                if (carouselContainer.scrollLeft + carouselContainer.offsetWidth >= carouselContainer.scrollWidth) {
+                    carouselContainer.scrollTo({
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    carouselContainer.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 4000);
+        };
+
+        const resetAutoSlide = () => {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = startAutoSlide();
+        };
+
+        autoSlideInterval = startAutoSlide();
+        
+        // --- Eventos de reset ---
+        carouselContainer.addEventListener('touchstart', resetAutoSlide, { passive: true });
+        carouselContainer.addEventListener('mousedown', resetAutoSlide);
+        carouselContainer.addEventListener('wheel', resetAutoSlide);
+        nextButton.addEventListener('click', resetAutoSlide);
+        prevButton.addEventListener('click', resetAutoSlide);
+    };
+
+    // Encontra todos os botões e inicializa os carrosséis
+    const prevButtons = document.querySelectorAll('.prev-button');
+    const nextButtons = document.querySelectorAll('.next-button');
+
+    prevButtons.forEach(button => {
+        const targetId = button.dataset.target;
+        const carousel = document.getElementById(targetId).querySelector('.carousel-container');
+        const nextButton = document.querySelector(`.next-button[data-target="${targetId}"]`);
+        
+        if (carousel) {
+            setupCarousel(carousel, button, nextButton);
+        }
     });
 
-    let currentIndex = 0;
-    let autoSlideInterval;
-    let isTransitioning = false;
-
-    const moveToSlide = (index) => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-
-        const newPosition = -index * itemWidth;
-        track.style.transform = `translateX(${newPosition}px)`;
-
-        if (index >= items.length) {
-            setTimeout(() => {
-                track.style.transition = 'none';
-                track.style.transform = `translateX(0px)`;
-                currentIndex = 0;
-                track.offsetWidth; // Força o reflow para aplicar a transição instantânea
-                track.style.transition = 'transform 0.5s ease-in-out';
-                isTransitioning = false;
-            }, 500); // 500ms é a duração da transição no CSS
-        } else {
-            setTimeout(() => {
-                isTransitioning = false;
-            }, 500);
-        }
-    };
-
-    nextButton.addEventListener('click', () => {
-        currentIndex++;
-        moveToSlide(currentIndex);
-        resetAutoSlide();
-    });
-
-    prevButton.addEventListener('click', () => {
-        if (currentIndex === 0) {
-            currentIndex = items.length;
-            track.style.transition = 'none';
-            track.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-            track.offsetWidth; // Força o reflow
-        }
-        currentIndex--;
-        track.style.transition = 'transform 0.5s ease-in-out';
-        moveToSlide(currentIndex);
-        resetAutoSlide();
-    });
-
-    const startAutoSlide = () => {
-        autoSlideInterval = setInterval(() => {
-            currentIndex++;
-            moveToSlide(currentIndex);
-        }, 5000); // Avança a cada 5 segundos
-    };
-
-    const resetAutoSlide = () => {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    };
-
-    startAutoSlide();
-
-    // Lógica para o Swipe (arrastar)
-    let isDragging = false;
-    let startPos = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    let animationID = 0;
-
-    const dragStart = (e) => {
-        isDragging = true;
-        startPos = e.pageX || e.touches[0].clientX;
-        prevTranslate = currentTranslate;
-        track.style.cursor = 'grabbing';
-        animationID = requestAnimationFrame(animation);
-    };
-
-    const dragEnd = () => {
-        isDragging = false;
-        track.style.cursor = 'grab';
-        cancelAnimationFrame(animationID);
-        const movedBy = currentTranslate - prevTranslate;
-        if (movedBy < -100) {
-            currentIndex++;
-        }
-        if (movedBy > 100) {
-            currentIndex--;
-        }
-        moveToSlide(currentIndex);
-    };
-
-    const dragMove = (e) => {
-        if (!isDragging) return;
-        const currentPos = e.pageX || e.touches[0].clientX;
-        currentTranslate = prevTranslate + currentPos - startPos;
-    };
-
-    track.addEventListener('mousedown', dragStart);
-    track.addEventListener('touchstart', (e) => { dragStart(e); resetAutoSlide(); });
-    track.addEventListener('mouseup', dragEnd);
-    track.addEventListener('touchend', dragEnd);
-    track.addEventListener('mouseleave', () => {
-        if (isDragging) dragEnd();
-    });
-    track.addEventListener('mousemove', dragMove);
-    track.addEventListener('touchmove', dragMove);
-
-    function animation() {
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        if (isDragging) requestAnimationFrame(animation);
-    }
 });

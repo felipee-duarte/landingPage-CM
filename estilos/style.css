@@ -258,6 +258,7 @@ main {
 
 .title {
   text-align: center;
+  margin-top: 2em;
   font-size: 1.25em;
   padding: 5px;
   text-transform: uppercase;
@@ -329,65 +330,46 @@ main {
 }
 
 
-/* Container que centraliza o carrossel e posiciona os botões */
-/* Estilos da seção */
 .produtos {
     padding: 2rem 0;
     text-align: center;
-    background-color: #f9f9f9;
-}
-
-.title-txt, .title {
-    margin: 0;
-    margin-bottom: 2rem;
-    color: #333;
-}
-
-
-/* Estilização individual de cada produto (mantém o seu original) */
-/* Estilos da seção */
-.produtos {
-    padding: 2rem 0;
-    text-align: center;
-    background-color: #f9f9f9;
-}
-
-.title-txt, .title {
-    margin: 0;
-    margin-bottom: 2rem;
-    color: #333;
 }
 
 /* Estilos do Carrossel - Adaptados para sua estrutura */
 .carousel-container {
     position: relative;
-    width: 90vw; /* Largura máxima do carrossel */
-    padding: 10px;
-    outline: 1px solid red;
+    width: 100vw; /* Largura do seu carrossel */
+    height: 500px;
     margin: 0 auto;
-    overflow: hidden; /* Esconde os itens fora da visualização */
+    margin-top: 2em;
+    padding-top: 15px;
+    overflow-x: scroll; /* Permite a rolagem horizontal */
+    overflow-y: hidden; /* Oculta a barra de rolagem vertical */
+    scroll-behavior: smooth; /* Animação suave para os botões */
+    scroll-snap-type: x mandatory; /* Faz os cards "se encaixarem" */
+    -webkit-overflow-scrolling: touch; /* Melhor rolagem em iOS */
+    display: flex; /* Para os cards ficarem lado a lado */
+    gap: 22px; /* O espaçamento entre os cards */
+    overflow-x: scroll; /* ESSA PROPRIEDADE É FUNDAMENTAL */
+    scroll-snap-type: x mandatory;
 }
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 90vw;
-    padding: 0 10px; /* Adiciona um pequeno padding nas laterais */
+.carousel-container::-webkit-scrollbar {
+    display: none;
 }
 
-/* Estilização individual de cada produto (ajustado) */
 .product {
-    flex-shrink: 0;
+    flex-shrink: 0; /* Impede que os itens encolham */
+    width: 80vw;
+    max-width: calc(80vw - 22px); /* A largura do container menos o espaçamento */
+    scroll-snap-align: center; /* O card se centraliza quando a rolagem para */
     height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 20px;
-    width: 70vw;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.36);
     background: var(--card);
-    transition: all 0.3s ease;
-    margin: 0 11px; /* Mantém o espaçamento entre os cards */
 }
 
 /* Efeito hover (mantém o seu original) */
@@ -486,24 +468,15 @@ main {
 
 /* Botões de navegação */
 .prev-button, .next-button {
+    /* Estilos para os seus botões de navegação */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 10px;
     cursor: pointer;
     z-index: 10;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.7;
-    transition: opacity 0.3s;
 }
 
 .prev-button:hover, .next-button:hover {
@@ -512,10 +485,12 @@ main {
 
 .prev-button {
     left: 10px;
+    display: none;
 }
 
 .next-button {
     right: 10px;
+    display: none;
 }
 
 

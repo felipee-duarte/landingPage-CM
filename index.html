@@ -23,8 +23,8 @@
                         <div class="bar bar--3"></div>
                     </label>                   
             </div>
-            <div class="logo-img">
-                <img src="assets/logo-mobile.png" alt="Logo CB beauty store">
+            <div class="logo-img" >
+                <a href="#home"><img src="assets/logo-mobile.png" alt="Logo CB beauty store"></a>
             </div>
         </div>
     </header>
@@ -274,13 +274,12 @@
      </section>
 
     <!-- PRODUTOS -->
-     <section id="produtos" class="produtos">
+     <section id="carrossel-boticario" class="produtos">
     <div>
         <h2 class="title-txt">PROMOÇÕES</h2>
     </div>
     <h2 class="title">oBoticário</h2>
     <div class="carousel-container">
-        <div class="carousel-track" id="carousel-list">
             <div class="product carousel-item">
                 <div class="image-product">
                     <img src="assets-product/Combo-Malbec.png" alt="Perfume floratta rose">
@@ -485,15 +484,16 @@
                     </div>
                 </div>
             </div>
-        </div>
         
-        <button class="prev-button">
+        <button class="prev-button" data-target="carrossel-boticario">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="next-button">
+        <button class="next-button" data-target="carrossel-boticario">
             <i class="fas fa-chevron-right"></i>
         </button>
     </div>
+
+    
 </section>
 
     <!-- CONTATO -->

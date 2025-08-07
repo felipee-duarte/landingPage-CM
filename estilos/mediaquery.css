@@ -1,14 +1,12 @@
-@media (min-width: 768px) {
+
+/*@media (max-width:1200px) {
     .product {
-        flex: 0 0 50%;
-        max-width: 50%;
+        width: 45vw;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     .product {
-        flex: 0 0 33.33%;
-        max-width: 33.33%;
+        width: 25vw;
     }
 }
-
