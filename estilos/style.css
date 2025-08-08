@@ -42,7 +42,8 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
+  height: 100px;
   z-index: 1000;
 }
 
@@ -54,7 +55,7 @@ header {
 }
 
 .logo-img img {
-  width: 6em;
+  width: 5.5em;
   height: auto;
 }
 
@@ -162,77 +163,26 @@ main {
   min-height: 100%;
 }
 
-.wrapper {
-  margin-top: 2em;
-  max-width: 992px;
+.carrossel {
+  width: 100vw;
+  margin-top: 5em;
   overflow: hidden;
 }
 
-.wrapper .card {
-  height: auto;
+.carrossel-track {
   display: flex;
-  flex-direction: column;
+  transition: transform 0.5s ease-in-out;
 }
 
-.wrapper .swiper-pagination-bullet {
-  width: 14px;
-  height: 14px;
-  overflow: hidden;
-  opacity: 1;
-  background-color: var(--card);
+.item {
+  flex: 0 0 100vw;
 }
 
-.wrapper .swiper-pagination-bullet-active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--highlight);
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: autoplay-loading 5s linear forwards;
-}
-
-.container:hover .wrapper .swiper-pagination-bullet-active::before {
-  animation-play-state: paused;
-}
-
-@keyframes autoplay-loading {
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-.wrapper :where(.swiper-button-prev, .swiper-button-next) {
-  color: var(--card);
-  margin-top: -35px;
-  transition: all 0.3s ease;
-}
-
-.wrapper :where(.swiper-button-prev, .swiper-button-next):hover {
-  color: var(--highlight);
-}
-
-.wrapper .swiper-button-prev {
-  display: none;
-}
-
-.wrapper .swiper-button-next {
-  display: none;
-}
-
-.card .card-image {
-  position: relative;
-}
-
-.card .card-image img {
-  display: flex;
-  margin: auto;
+.item img {
   width: 100%;
   height: auto;
   object-fit: cover;
+  display: block;
 }
 
 .highlights {
@@ -341,41 +291,66 @@ main {
   margin: auto;
 }
 
-.produtos {
+.carrossel-produto {
   padding: 2rem 0;
   text-align: center;
 }
 
-/* Estilos do Carrossel - Adaptados para sua estrutura */
-.carousel-container {
-  position: relative;
-  width: 100vw; /* Largura do seu carrossel */
-  height: 500px;
-  margin: 0 auto;
-  margin-top: 2em;
-  padding-top: 15px;
-  overflow-x: scroll; /* Permite a rolagem horizontal */
-  overflow-y: hidden; /* Oculta a barra de rolagem vertical */
-  scroll-behavior: smooth; /* Animação suave para os botões */
-  scroll-snap-type: x mandatory; /* Faz os cards "se encaixarem" */
-  -webkit-overflow-scrolling: touch; /* Melhor rolagem em iOS */
-  display: flex; /* Para os cards ficarem lado a lado */
-  gap: 22px; /* O espaçamento entre os cards */
-  overflow-x: scroll; /* ESSA PROPRIEDADE É FUNDAMENTAL */
-  scroll-snap-type: x mandatory;
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 100vw;
+  padding: 20px 20px;
+  overflow: hidden;
 }
 
-.carousel-container::-webkit-scrollbar {
-  display: none;
+.wrapper .swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+  opacity: 1;
+  background-color: var(--button);
+}
+
+.container:hover .wrapper .swiper-pagination-bullet-active::before {
+  animation-play-state: paused;
+}
+
+.wrapper .swiper-pagination-bullet-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--hover);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: autoplay-loading 5s linear forwards;
+}
+
+@keyframes autoplay-loading {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.wrapper :where(.swiper-button-prev, .swiper-button-next) {
+  color: var(--highlight);
+  margin-top: -35px;
+  transition: all 0.3s ease;
+}
+
+.wrapper :where(.swiper-button-prev, .swiper-button-next):hover {
+  color: var(--hover);
 }
 
 .product {
-  flex-shrink: 0; /* Impede que os itens encolham */
-  width: 80vw;
-  max-width: calc(80vw - 22px); /* A largura do container menos o espaçamento */
-  scroll-snap-align: center; /* O card se centraliza quando a rolagem para */
-  height: 450px;
+  width: 70vw;
+  min-height: 350px;
   display: flex;
+  margin-bottom: 2em;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 20px;
@@ -392,7 +367,6 @@ main {
   text-align: left;
 }
 
-/* Efeito hover (mantém o seu original) */
 .product:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 10px var(--hover);
@@ -485,36 +459,6 @@ main {
   transform: translateY(-3px);
   box-shadow: 0 5px 5px var(--hover);
 }
-
-/* Botões de navegação */
-.prev-button,
-.next-button {
-  /* Estilos para os seus botões de navegação */
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.prev-button:hover,
-.next-button:hover {
-  opacity: 1;
-}
-
-.prev-button {
-  left: 10px;
-  display: none;
-}
-
-.next-button {
-  right: 10px;
-  display: none;
-}
-
 
 .flex__1 {
   width: 100%;

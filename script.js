@@ -18,6 +18,77 @@ function clickMenu() {
     }
 }
 
+const track = document.getElementById('carrossel-track');
+const isDesktop = window.innerWidth >= 768;
+
+// Lista de imagens com versões mobile e desktop
+const imagens = [
+  { mobile: 'assets/boticario-1P.png', desktop: 'assets/boticario-1G.png' },
+  { mobile: 'assets/boticario-2P.png', desktop: 'assets/boticario-2G.png' },
+  { mobile: 'assets/boticario-3P.png', desktop: 'assets/boticario-3G.png' }
+];
+
+// Preenche as imagens no carrossel
+function carregarImagens() {
+  track.innerHTML = ''; // limpa tudo
+
+  imagens.forEach((imgObj) => {
+    const div = document.createElement('div');
+    div.classList.add('item');
+
+    const img = document.createElement('img');
+    img.src = isDesktop ? imgObj.desktop : imgObj.mobile;
+
+    div.appendChild(img);
+    track.appendChild(div);
+  });
+
+  // Clona para efeito infinito
+  imagens.forEach((imgObj) => {
+    const div = document.createElement('div');
+    div.classList.add('item');
+
+    const img = document.createElement('img');
+    img.src = isDesktop ? imgObj.desktop : imgObj.mobile;
+
+    div.appendChild(img);
+    track.appendChild(div);
+  });
+}
+
+carregarImagens();
+
+// Lógica do carrossel automático
+let index = 0;
+let total = imagens.length;
+let intervalo = 6000;
+
+function slide() {
+  index++;
+  const porcentagem = isDesktop ? 33.3333 : 100;
+  track.style.transform = `translateX(-${porcentagem * index}vw)`;
+
+  if (index >= total) {
+    setTimeout(() => {
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+      index = 0;
+    }, 500);
+
+    setTimeout(() => {
+      track.style.transition = 'transform 0.5s ease-in-out';
+    }, 600);
+  }
+}
+
+setInterval(slide, intervalo);
+
+// Recarrega ao redimensionar para trocar imagem
+window.addEventListener('resize', () => {
+  location.reload();
+});
+
+
 const swiper = new Swiper('.wrapper', {
     loop: true,
     spaceBetween: 30,
@@ -39,84 +110,15 @@ const swiper = new Swiper('.wrapper', {
         prevE1: '.swiper-button-prev',
     },
 
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    // Função que inicializa um carrossel específico
-    const setupCarousel = (carouselContainer, prevButton, nextButton) => {
-        const getScrollAmount = () => {
-            const firstItem = carouselContainer.querySelector('.product');
-            if (!firstItem) return 0;
-            return firstItem.offsetWidth + 22;
-        };
-
-        if (nextButton) {
-            nextButton.addEventListener('click', () => {
-                carouselContainer.scrollBy({
-                    left: getScrollAmount(),
-                    behavior: 'smooth'
-                });
-                resetAutoSlide();
-            });
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
         }
-
-        if (prevButton) {
-            prevButton.addEventListener('click', () => {
-                carouselContainer.scrollBy({
-                    left: -getScrollAmount(),
-                    behavior: 'smooth'
-                });
-                resetAutoSlide();
-            });
-        }
-
-        // --- Lógica do Autoplay ---
-        let autoSlideInterval;
-        const startAutoSlide = () => {
-            return setInterval(() => {
-                const scrollAmount = getScrollAmount();
-                if (carouselContainer.scrollLeft + carouselContainer.offsetWidth >= carouselContainer.scrollWidth) {
-                    carouselContainer.scrollTo({
-                        left: 0,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    carouselContainer.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 4000);
-        };
-
-        const resetAutoSlide = () => {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = startAutoSlide();
-        };
-
-        autoSlideInterval = startAutoSlide();
-
-        // --- Eventos de reset ---
-        carouselContainer.addEventListener('touchstart', resetAutoSlide, { passive: true });
-        carouselContainer.addEventListener('mousedown', resetAutoSlide);
-        carouselContainer.addEventListener('wheel', resetAutoSlide);
-        nextButton.addEventListener('click', resetAutoSlide);
-        prevButton.addEventListener('click', resetAutoSlide);
-    };
-
-    // Encontra todos os botões e inicializa os carrosséis
-    const prevButtons = document.querySelectorAll('.prev-button');
-    const nextButtons = document.querySelectorAll('.next-button');
-
-    prevButtons.forEach(button => {
-        const targetId = button.dataset.target;
-        const carousel = document.getElementById(targetId).querySelector('.carousel-container');
-        const nextButton = document.querySelector(`.next-button[data-target="${targetId}"]`);
-
-        if (carousel) {
-            setupCarousel(carousel, button, nextButton);
-        }
-    });
-
+    }
 });

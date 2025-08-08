@@ -1,12 +1,10 @@
+@media (max-width: 768px) {
 
-/*@media (max-width:1200px) {
-    .product {
-        width: 45vw;
+    div .swiper-button-prev{
+        display: none;
     }
-}
 
-@media (min-width: 1200px) {
-    .product {
-        width: 25vw;
+     div .swiper-button-next{
+        display: none;
     }
 }
