@@ -83,12 +83,6 @@ function slide() {
 
 setInterval(slide, intervalo);
 
-// Recarrega ao redimensionar para trocar imagem
-window.addEventListener('resize', () => {
-  location.reload();
-});
-
-
 const swiper = new Swiper('.wrapper', {
     loop: true,
     spaceBetween: 30,

@@ -42,8 +42,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100px;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -119,7 +118,7 @@ menu {
   top: 100px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   background: linear-gradient(180deg, var(--defaut) 10%, var(--bg-color) 100%);
   z-index: 999;
 }
@@ -141,7 +140,7 @@ menu a {
   margin-left: 0;
   padding: 20px;
   text-align: center;
-  width: 100vw;
+  width: 100%;
   text-transform: uppercase;
   font-size: 1.25em;
   text-decoration: none;
@@ -164,7 +163,7 @@ main {
 }
 
 .carrossel {
-  width: 100vw;
+  width: 100%;
   margin-top: 5em;
   overflow: hidden;
 }
@@ -175,7 +174,7 @@ main {
 }
 
 .item {
-  flex: 0 0 100vw;
+  flex: 0 0 100%;
 }
 
 .item img {
@@ -240,7 +239,7 @@ main {
   flex-direction: column;
 }
 .brands {
-  width: 90vw;
+  width: 90%;
   height: auto;
   margin: auto;
   display: flex;
@@ -283,7 +282,7 @@ main {
 }
 
 .brand-promotion {
-  width: 90vw;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -300,7 +299,7 @@ main {
   display: flex;
   align-items: center;
   margin: auto;
-  width: 100vw;
+  width: 100%;
   padding: 20px 20px;
   overflow: hidden;
 }
@@ -347,7 +346,7 @@ main {
 }
 
 .product {
-  width: 70vw;
+  width: 70%;
   min-height: 350px;
   display: flex;
   margin-bottom: 2em;
@@ -642,7 +641,7 @@ main {
 }
 
 .contato {
-  width: 40vw;
+  width: 40%;
   margin: auto;
   margin-top: 1em;
   margin-bottom: 3em;
