@@ -11,6 +11,7 @@
   --card: #faf7ff;
   --border: #faf7ff;
   --hover: #3c2363;
+  
   /* ICONE DE MENU */
   --gap: 5px;
   --height-bar: 2.5px;
@@ -376,7 +377,6 @@ main {
 }
 
 .product .image-product img {
-  width: 6em;
   object-fit: cover;
   display: flex;
   margin: auto;
@@ -386,7 +386,7 @@ main {
 .product .image-product .product-tag {
   position: absolute;
   left: 25px;
-  top: 25px;
+  top: -20px;
   color: var(--txt-title);
   font-weight: bold;
   font-size: 1em;
