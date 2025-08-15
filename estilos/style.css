@@ -348,7 +348,7 @@ main {
 
 .product {
   width: 70%;
-  min-height: 350px;
+  height: 350px;
   display: flex;
   margin-bottom: 2em;
   flex-direction: column;
@@ -457,6 +457,11 @@ main {
 .product .product-footer .product-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 5px var(--hover);
+}
+
+section .fundo {
+  background: url(../assets/fundo-cm.png) no-repeat center center;
+  padding: 10px;
 }
 
 .flex__1 {
