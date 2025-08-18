@@ -296,6 +296,72 @@ main {
   text-align: center;
 }
 
+div.txt-animado {
+  color: var(--defaut);
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.txt-animado span {
+  position: relative;
+}
+
+.txt-animado span::before {
+  content: "oBoticário";
+  color: var(--txt-title);
+  animation: words 20s infinite;
+}
+
+.txt-animado span::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 100%;
+  background-color: var(--bg-color);
+  border-left: 3px solid var(--highlight);
+  right: -8px;
+  animation: cursor 0.8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+  to {
+    border-left: 3px solid var(--button);
+  }
+}
+
+@keyframes words {
+  0%,
+  20% {
+    content: "oBoticário";
+  }
+  21%,
+  40% {
+    content: "O.U.I";
+  }
+  41%,
+  60% {
+    content: "Eudora";
+  }
+  61%,
+  80% {
+    content: "oBoticário";
+  }
+  81%,
+  100% {
+    content: "Eudora";
+  }
+}
+
+@keyframes typing {
+  10%,15%,30%,35%,50%,55%,70%,75%,90%,95% {
+    width: 0;
+  }
+  5%,20%,25%,40%,45%,60%,65%,80%,85% {
+    width: calc(100% + 8px);
+  }
+}
+
 .wrapper {
   display: flex;
   align-items: center;
