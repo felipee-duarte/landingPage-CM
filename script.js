@@ -23,9 +23,9 @@ const isDesktop = window.innerWidth >= 768;
 
 // Lista de imagens com versões mobile e desktop
 const imagens = [
-  { mobile: 'assets/boticario-1P.png', desktop: 'assets/boticario-1G.png' },
-  { mobile: 'assets/boticario-2P.png', desktop: 'assets/boticario-2G.png' },
-  { mobile: 'assets/boticario-3P.png', desktop: 'assets/boticario-3G.png' }
+  { mobile: 'assets/boticario-1P.png', desktop: 'assets/boticario-1M.png' },
+  { mobile: 'assets/boticario-2P.png', desktop: 'assets/boticario-2M.png' },
+  { mobile: 'assets/boticario-3P.png', desktop: 'assets/boticario-3M.png' }
 ];
 
 // Preenche as imagens no carrossel
