@@ -23,9 +23,9 @@ const isDesktop = window.innerWidth >= 768;
 
 // Lista de imagens com versões mobile e desktop
 const imagens = [
-  { mobile: 'assets/boticario-1P.png', desktop: 'assets/boticario-1M.png' },
-  { mobile: 'assets/boticario-2P.png', desktop: 'assets/boticario-2M.png' },
-  { mobile: 'assets/boticario-3P.png', desktop: 'assets/boticario-3M.png' }
+  { mobile: 'assets/boticario-1P.png', desktop: 'assets/boticario-1G.png' },
+  { mobile: 'assets/boticario-2P.png', desktop: 'assets/boticario-2G.png' },
+  { mobile: 'assets/boticario-3P.png', desktop: 'assets/boticario-3G.png' }
 ];
 
 // Preenche as imagens no carrossel
@@ -65,7 +65,7 @@ let intervalo = 6000;
 
 function slide() {
   index++;
-  const porcentagem = isDesktop ? 33.3333 : 100;
+  const porcentagem = isDesktop ? 100 : 100;
   track.style.transform = `translateX(-${porcentagem * index}vw)`;
 
   if (index >= total) {

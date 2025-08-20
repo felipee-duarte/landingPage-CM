@@ -44,6 +44,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100px;
   z-index: 1000;
 }
 
@@ -54,8 +55,15 @@ header {
   justify-content: space-between;
 }
 
+.logo-img {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
 .logo-img img {
-  width: 5.5em;
+  width: 7em;
+  text-align: center;
   height: auto;
 }
 
@@ -119,9 +127,10 @@ menu {
   top: 100px;
   left: 0;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   background: linear-gradient(180deg, var(--defaut) 10%, var(--bg-color) 100%);
   z-index: 999;
+  
 }
 
 menu.ativo {
@@ -726,7 +735,8 @@ section .fundo {
   margin-bottom: 3em;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1em;
 }
 
 .button {

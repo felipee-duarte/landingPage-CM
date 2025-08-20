@@ -8,8 +8,28 @@
 
 */
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
+:root {
+  --defaut: #ebdcfb;
+  --highlight: #7b2cbf;
+  --bg-color: #f4ecff;
+  --txt-title: #3e0d63;
+  --txt-p: #857c91;
+  --button: #d8b4f8;
+  --card: #faf7ff;
+  --border: #faf7ff;
+  --hover: #3c2363;
+  
+  /* ICONE DE MENU */
+  --gap: 5px;
+  --height-bar: 2.5px;
+  --pos-y-bar-one: 0;
+  --pos-y-bar-three: 0;
+  --scale-bar: 1;
+  --rotate-bar-one: 0;
+  --rotate-bar-three: 0;
+}
 
+@media screen and (min-width: 768px) and (max-width: 992px) {
 
     .title-txt {
         font-size: 2.5em;
@@ -73,11 +93,181 @@
   .button .ph {
   font-size: 3em;
   }
+}
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
 
+    .title-txt {
+        font-size: 2.5em;
+    }
+
+    .txt-animado span {
+        font-size: 1.5em;
+    }
+
+    .logo-img img {
+    width: 8em;
+    height: auto;
+    }
+
+    .highlights {
+        flex-direction: row;
+    }
+
+    div .swiper-button-prev{
+        display: none;
+    }
+
+     div .swiper-button-next{
+        display: none;
+    }
+
+    section .fundo {
+        background: url(../assets/fundo-cm-800.png);
+    }
+
+    .card {
+        width: 400px;
+        height: 242px;
+        margin-top: 89px;
+        margin-bottom: 89px;
+    }
+
+    .contato {
+    width: 30%;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    }
+
+    .button::before {
+    width: 85px;
+    height: 85px;
+    background-color: var(--button);
+    transition: 0.4s;
+    }
+
+   .button {
+   cursor: pointer;
+   width: 80px;
+   height: 80px;
+   }
+
+  .button .ph {
+  font-size: 3em;
+  }
 }
 
 @media screen and (min-width: 1200px) {
 
+    .title-txt {
+        font-size: 3em;
+        margin-top: 1.5em;
+    }
+
+    .txt-animado span {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 2em;
+    }
+
+    .highlights-text {
+        font-size: 1.5em;
+        
+    }
+
+    .logo-img img {
+    width: 7em;
+    height: auto;
+    }
+
+    menu a {
+    font-size: 1.5em;
+    margin-top: 40px;
+    }
+
+    .highlights {
+        flex-direction: row;
+    }
+
+    .highlights-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 500px;
+        height: 150px;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+        border: 3.25em solid var(--border);
+    }
+
+    .brand img {
+        width: 100px;
+        height: 100px;
+    }
+
+    div .swiper-button-prev{
+        display: none;
+    }
+
+     div .swiper-button-next{
+        display: none;
+    }
+
+    section .fundo {
+        background: url(../assets/fundo-cm-800.png);
+    }
+
+    .product {
+        width: 300px;
+        height: 300px;
+    }
+
+    .card {
+        width: 400px;
+        height: 242px;
+        margin-top: 89px;
+        margin-bottom: 89px;
+    }
+
+    .contato {
+    width: 20%;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    }
+
+    .button::before {
+    width: 85px;
+    height: 85px;
+    background-color: var(--button);
+    transition: 0.4s;
+    }
+
+   .button {
+   cursor: pointer;
+   width: 80px;
+   height: 80px;
+   }
+
+  .button .ph {
+  font-size: 3em;
+  }
 }
