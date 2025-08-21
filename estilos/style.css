@@ -431,7 +431,6 @@ div.txt-animado {
 
 .product {
   width: 70%;
-  height: 350px;
   display: flex;
   margin-bottom: 2em;
   flex-direction: column;
@@ -442,7 +441,7 @@ div.txt-animado {
 }
 
 .product .product-title {
-  margin-top: 1.5em;
+  margin-top: 1.25em;
   text-align: left;
 }
 
@@ -463,13 +462,13 @@ div.txt-animado {
   object-fit: cover;
   display: flex;
   margin: auto;
-  margin-top: 3em;
+  margin-top: 1em;
 }
 
 .product .image-product .product-tag {
   position: absolute;
   left: 25px;
-  top: -20px;
+  top: -5px;
   color: var(--txt-title);
   font-weight: bold;
   font-size: 1em;
@@ -545,6 +544,7 @@ div.txt-animado {
 section .fundo {
   background: url(../assets/fundo-cm.png) no-repeat center center;
   padding: 10px;
+  margin-bottom: 2em;
 }
 
 .flex__1 {

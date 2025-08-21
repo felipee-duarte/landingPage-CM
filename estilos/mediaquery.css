@@ -165,12 +165,12 @@
 @media screen and (min-width: 1200px) {
 
     .title-txt {
-        font-size: 3em;
+        font-size: 2em;
         margin-top: 1.5em;
     }
 
     .txt-animado span {
-        font-size: 1.5em;
+        font-size: 1.25em;
     }
 
     h3 {
@@ -178,7 +178,7 @@
     }
 
     .highlights-text {
-        font-size: 1.5em;
+        font-size: 1.25em;
         
     }
 
