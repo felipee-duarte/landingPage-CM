@@ -205,6 +205,11 @@
         height: 150px;
     }
 
+    .brands {
+        width: 80%;
+    }
+     
+
     .brand {
         display: flex;
         align-items: center;

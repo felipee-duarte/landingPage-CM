@@ -248,8 +248,9 @@ main {
   justify-content: center;
   flex-direction: column;
 }
+
 .brands {
-  width: 90%;
+  width: 350px;
   height: auto;
   margin: auto;
   display: flex;
