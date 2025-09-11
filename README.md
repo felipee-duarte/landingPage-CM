@@ -1,4 +1,4 @@
-<h1 align="center"> CM Beauty </h1>
+<h1 align="center"> CM beauty store</h1>
 
 
 <p align="center">
@@ -14,7 +14,7 @@
 <br>
 
 <p align="center">
-  <img alt="Portifólio" src="assets/Readme-CM.png" width="100%">
+  <img alt="Portifólio" src="assets/Readme-CM.jpg" width="100%">
 </p>
 
 ## 🚀 Tecnologias
