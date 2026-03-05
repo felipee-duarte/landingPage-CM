@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Essência - Cadastros</title>
+    <link rel="stylesheet" href="estilos/produtos.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="menu">☰</div>
+      <img src="assets/logo-deesktop.png" alt="" />
+    </header>
+    
+    <h1 class="titulo">Cadastros</h1>
+    
+    <main class="container">
+
+      <!-- ABAS -->
+      <div class="tabs">
+        <button onclick="trocarAba(event, 'produtos')" class="active">
+          Produtos
+        </button>
+        <button onclick="trocarAba(event, 'materiais')">Materiais</button>
+        <button onclick="trocarAba(event, 'clientes')">Clientes</button>
+      </div>
+
+      <!-- PRODUTOS -->
+      <section id="produtosSection">
+        <div class="header-produtos">
+          <h1>Produtos</h1>
+          <button class="btn-primary" onclick="abrirModal('produto')">
+            + Novo Produto
+          </button>
+        </div>
+        <div id="listaProdutos" class="lista-produtos"></div>
+      </section>
+
+      <!-- MATERIAIS -->
+      <section id="materiaisSection" style="display: none">
+        <div class="header-produtos">
+          <h1>Materiais</h1>
+          <button class="btn-primary" onclick="abrirModal('caixa')">
+            + Nova Caixa
+          </button>
+        </div>
+        <div id="listaCaixas" class="lista-produtos"></div>
+      </section>
+
+      <!-- CLIENTES -->
+      <section id="clientesSection" style="display: none">
+        <div class="header-produtos">
+          <h1>Clientes</h1>
+          <button class="btn-primary" onclick="abrirModal('cliente')">
+            + Novo Cliente
+          </button>
+        </div>
+        <div id="listaClientes" class="lista-produtos"></div>
+      </section>
+    </main>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitulo"></h2>
+          <span class="close" onclick="fecharModal()">×</span>
+        </div>
+
+        <div id="modalBody"></div>
+
+        <button class="btn-primary salvar" onclick="salvar()">Salvar</button>
+      </div>
+    </div>
+
+    <script src="script/cadastros.js"></script>
+  </body>
+</html>
