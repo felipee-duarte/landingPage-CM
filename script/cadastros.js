@@ -5,6 +5,9 @@
 let produtos = [];
 let caixas = [];
 let clientes = [];
+let plasticos = [];
+let fitas = [];
+let etiquetas = [];
 
 let tipoAtual = null;
 
@@ -112,6 +115,87 @@ function abrirModal(tipo) {
     `;
     }
 
+    if (tipo === "plastico") {
+
+  document.getElementById("modalTitulo").innerText = "Plástico Bolha";
+
+  body.innerHTML = `
+
+  <div class="form-group">
+    <label>Comprimento usado na embalagem (cm)</label>
+    <input type="number" id="comprimentoBolha">
+  </div>
+
+  <div class="form-group">
+    <label>Tamanho do rolo (m)</label>
+    <input type="number" id="metrosBolha" oninput="calcularBolha()">
+  </div>
+
+  <div class="form-group">
+    <label>Valor do rolo (R$)</label>
+    <input type="number" id="valorBolha" oninput="calcularBolha()">
+  </div>
+
+  <div class="custo-ml">
+    Custo por cm: <span id="resultadoBolha">R$ 0.0000</span>
+  </div>
+
+  `;
+
+}
+
+if (tipo === "fita") {
+
+document.getElementById("modalTitulo").innerText = "Fita Adesiva";
+
+body.innerHTML = `
+
+<div class="form-group">
+<label>Comprimento usado na embalagem (mm)</label>
+<input type="number" id="comprimentoFita">
+</div>
+
+<div class="form-group">
+<label>Tamanho do rolo (m)</label>
+<input type="number" id="metrosFita" oninput="calcularFita()">
+</div>
+
+<div class="form-group">
+<label>Valor do rolo (R$)</label>
+<input type="number" id="valorFita" oninput="calcularFita()">
+</div>
+
+<div class="custo-ml">
+Custo por cm: <span id="resultadoFita">R$ 0.0000</span>
+</div>
+
+`;
+}
+
+if (tipo === "etiqueta") {
+
+document.getElementById("modalTitulo").innerText = "Etiqueta Adesiva";
+
+body.innerHTML = `
+
+<div class="form-group">
+<label>Quantidade (un)</label>
+<input type="number" id="quantidadeEtiqueta" oninput="calcularEtiqueta()">
+</div>
+
+<div class="form-group">
+<label>Valor do pacote (R$)</label>
+<input type="number" id="valorEtiqueta" oninput="calcularEtiqueta()">
+</div>
+
+<div class="custo-ml">
+Custo por unidade: <span id="resultadoEtiqueta">R$ 0.0000</span>
+</div>
+
+`;
+
+}
+
     if (tipo === "cliente") {
         document.getElementById("modalTitulo").innerText = "Novo Cliente";
         body.innerHTML = `
@@ -182,6 +266,62 @@ function salvar() {
         renderCaixas();
     }
 
+    if (tipoAtual === "plastico") {
+
+  const metros = parseFloat(document.getElementById("metrosBolha").value) || 0;
+  const valor = parseFloat(document.getElementById("valorBolha").value) || 0;
+
+  const cm = metros * 100;
+
+  const custoCm = cm > 0 ? (valor / cm) : 0;
+
+  plasticos.push({
+    comprimento: document.getElementById("comprimentoBolha").value,
+    metros,
+    valor,
+    custoCm
+  });
+
+  renderPlasticos();
+
+}
+
+if(tipoAtual === "fita"){
+
+const metros = parseFloat(document.getElementById("metrosFita").value) || 0;
+const valor = parseFloat(document.getElementById("valorFita").value) || 0;
+
+const cm = metros * 100;
+
+const custoCm = cm > 0 ? valor / cm : 0;
+
+fitas.push({
+metros,
+valor,
+custoCm
+});
+
+renderMateriais();
+
+}
+
+if(tipoAtual === "etiqueta"){
+
+const qtd = parseFloat(document.getElementById("quantidadeEtiqueta").value) || 0;
+const valor = parseFloat(document.getElementById("valorEtiqueta").value) || 0;
+
+const custoUn = qtd > 0 ? valor / qtd : 0;
+
+etiquetas.push({
+qtd,
+valor,
+custoUn
+});
+
+renderMateriais();
+
+}
+
     if (tipoAtual === "cliente") {
         clientes.push({
             nome: nomeCliente.value,
@@ -250,6 +390,90 @@ function renderProdutos() {
 
 }
 
+function renderMateriais(){
+
+const lista = document.getElementById("listaMateriais");
+
+lista.innerHTML = "";
+
+plasticos.forEach((p,index)=>{
+
+lista.innerHTML += `
+<div class="card">
+
+<div style="display:flex; justify-content:space-between;">
+
+<h3>Plástico Bolha</h3>
+
+<div>
+<button onclick="removerPlastico(${index})">🗑️</button>
+</div>
+
+</div>
+
+<div class="card-info">
+<div><span>Tamanho</span><span>${p.metros} m</span></div>
+<div><span>Valor</span><span>R$ ${p.valor}</span></div>
+<div><span>Custo/cm</span><span class="custo-highlight">R$ ${p.custoCm.toFixed(4)}</span></div>
+</div>
+
+</div>
+`;
+
+});
+
+fitas.forEach((f,index)=>{
+
+lista.innerHTML += `
+<div class="card">
+
+<div style="display:flex; justify-content:space-between;">
+<h3>Fita Adesiva</h3>
+
+<div>
+<button onclick="removerFita(${index})">🗑️</button>
+</div>
+
+</div>
+
+<div class="card-info">
+<div><span>Tamanho</span><span>${f.metros} m</span></div>
+<div><span>Valor</span><span>R$ ${f.valor}</span></div>
+<div><span>Custo/cm</span><span class="custo-highlight">R$ ${f.custoCm.toFixed(4)}</span></div>
+</div>
+
+</div>
+`;
+
+});
+
+etiquetas.forEach((e,index)=>{
+
+lista.innerHTML += `
+<div class="card">
+
+<div style="display:flex; justify-content:space-between;">
+<h3>Etiqueta</h3>
+
+<div>
+<button onclick="removerEtiqueta(${index})">🗑️</button>
+</div>
+
+</div>
+
+<div class="card-info">
+<div><span>Quantidade</span><span>${e.qtd} un</span></div>
+<div><span>Valor</span><span>R$ ${e.valor}</span></div>
+<div><span>Custo/un</span><span class="custo-highlight">R$ ${e.custoUn.toFixed(4)}</span></div>
+</div>
+
+</div>
+`;
+
+});
+
+}
+
 function renderCaixas() {
     const lista = document.getElementById("listaCaixas");
     lista.innerHTML = "";
@@ -267,6 +491,43 @@ function renderCaixas() {
       </div>
     `;
     });
+}
+
+function renderPlasticos() {
+
+  const lista = document.getElementById("listaCaixas");
+
+  plasticos.forEach(p => {
+
+    lista.innerHTML += `
+      <div class="card">
+        <h3>Plástico Bolha</h3>
+
+        <div class="card-info">
+
+          <div>
+            <span>Tamanho</span>
+            <span>${p.metros} m</span>
+          </div>
+
+          <div>
+            <span>Valor</span>
+            <span>R$ ${p.valor}</span>
+          </div>
+
+          <div>
+            <span>Custo/cm</span>
+            <span class="custo-highlight">
+              R$ ${p.custoCm.toFixed(4)}
+            </span>
+          </div>
+
+        </div>
+      </div>
+    `;
+
+  });
+
 }
 
 function renderClientes() {
@@ -299,6 +560,21 @@ function removerProduto(index) {
 
 }
 
+function removerPlastico(i){
+plasticos.splice(i,1);
+renderMateriais();
+}
+
+function removerFita(i){
+fitas.splice(i,1);
+renderMateriais();
+}
+
+function removerEtiqueta(i){
+etiquetas.splice(i,1);
+renderMateriais();
+}
+
 /*EDITAR PRODUTO*/
 
 let editandoIndex = null;
@@ -317,5 +593,59 @@ function editarProduto(index) {
   editandoIndex = index;
 
   abrirModal("produto");
+
+}
+
+function calcularBolha() {
+
+  const metros = parseFloat(document.getElementById("metrosBolha").value) || 0;
+  const valor = parseFloat(document.getElementById("valorBolha").value) || 0;
+
+  const cm = metros * 100;
+
+  if (cm <= 0) {
+    document.getElementById("resultadoBolha").innerText = "R$ 0.0000";
+    return;
+  }
+
+  const custo = valor / cm;
+
+  document.getElementById("resultadoBolha").innerText =
+    "R$ " + custo.toFixed(4);
+
+}
+
+function calcularFita(){
+
+const metros = parseFloat(document.getElementById("metrosFita").value) || 0;
+const valor = parseFloat(document.getElementById("valorFita").value) || 0;
+
+const cm = metros * 100;
+
+if(cm <= 0){
+document.getElementById("resultadoFita").innerText = "R$ 0.0000";
+return;
+}
+
+const custo = valor / cm;
+
+document.getElementById("resultadoFita").innerText = "R$ " + custo.toFixed(4);
+
+}
+
+
+function calcularEtiqueta(){
+
+const qtd = parseFloat(document.getElementById("quantidadeEtiqueta").value) || 0;
+const valor = parseFloat(document.getElementById("valorEtiqueta").value) || 0;
+
+if(qtd <= 0){
+document.getElementById("resultadoEtiqueta").innerText = "R$ 0.0000";
+return;
+}
+
+const custo = valor / qtd;
+
+document.getElementById("resultadoEtiqueta").innerText = "R$ " + custo.toFixed(4);
 
 }

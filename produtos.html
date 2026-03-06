@@ -36,19 +36,51 @@
         <div id="listaProdutos" class="lista-produtos"></div>
       </section>
 
-      <!-- MATERIAIS -->
-      <section id="materiaisSection" style="display: none">
-        <div class="header-produtos">
-          <h1>Materiais</h1>
-          <button class="btn-primary" onclick="abrirModal('caixa')">
-            + Nova Caixa
-          </button>
-        </div>
-        <div id="listaCaixas" class="lista-produtos"></div>
-      </section>
+     <!-- MATERIAIS -->
+<section id="materiaisSection" style="display: none">
+
+<div class="header-produtos">
+  <h1>Materiais</h1>
+
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+    <button class="btn-primary" onclick="abrirModal('caixa')">
+      + Nova Caixa
+    </button>
+
+    <button class="btn-primary" onclick="abrirModal('plastico')">
+      + Plástico Bolha
+    </button>
+
+    <button class="btn-primary" onclick="abrirModal('fita')">
+      + Fita Adesiva
+    </button>
+
+    <button class="btn-primary" onclick="abrirModal('etiqueta')">
+      + Etiqueta Adesiva
+    </button>
+
+  </div>
+</div>
+
+<div id="listaMateriais"></div>
+
+</section>
 
       <!-- CLIENTES -->
       <section id="clientesSection" style="display: none">
+        <div class="header-produtos">
+          <h1>Clientes</h1>
+          <button class="btn-primary" onclick="abrirModal('cliente')">
+            + Novo Cliente
+          </button>
+        </div>
+        <div id="listaClientes" class="lista-produtos"></div>
+      </section>
+    </main>
+
+    <!-- PEDIDO -->
+      <section id="pedidossSection" style="display: none">
         <div class="header-produtos">
           <h1>Clientes</h1>
           <button class="btn-primary" onclick="abrirModal('cliente')">
